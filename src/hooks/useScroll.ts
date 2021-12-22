@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { GLOBAL_NAV_BAR_HEIGHT } from '../navs/GlobalNavBar/styles';
+import { GLOBAL_NAV_BAR_HEIGHT } from '../components/GlobalNavBar/styles';
 import { throttle } from '../utils';
 
 const THROTTLE_TIME_MS = 30;

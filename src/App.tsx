@@ -1,7 +1,6 @@
-import { SectionDescription, SectionHero, SectionLast, SectionPlain } from './sections';
-import { SECTION } from './constants';
-import { GlobalNavBar, LocalNavBar } from './navs';
+import { GlobalNavBar, LocalNavBar, SectionDescription, SectionHero, SectionLast, SectionPlain } from './components';
 import { useResize, useScroll } from './hooks';
+import { SECTION } from './constants';
 
 export const App = () => {
   const { sectionHeights, accSectionHeights, heightRatio } = useResize();

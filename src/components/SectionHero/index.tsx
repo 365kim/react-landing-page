@@ -1,4 +1,4 @@
-import { Section } from './styles';
+import { Heading, Section } from './styles';
 import { SectionProps } from '../../types';
 
 interface Props extends SectionProps {}
@@ -12,9 +12,9 @@ export const SectionHero = ({ sectionInfo, customHeight, heightRatio }: Props) =
       customHeight={customHeight}
       customTransform={customTransform}
       className="scroll-section"
-      style={{ backgroundColor: 'black' }}
+      style={{ backgroundColor: 'gray' }}
     >
-      <h1>AirMug Pro</h1>
+      <Heading>AirMug Pro</Heading>
 
       <div className="sticky-elem sticky-elem-canvas">
         <canvas id="video-canvas-0" width="1920" height="1080"></canvas>

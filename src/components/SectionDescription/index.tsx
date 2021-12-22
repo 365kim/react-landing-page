@@ -9,7 +9,7 @@ export const SectionDescription = ({ customHeight }: Props) => {
       customHeight={customHeight}
       className="scroll-section"
       id="scroll-section-2"
-      style={{ backgroundColor: 'black' }}
+      style={{ backgroundColor: 'gray' }}
     >
       <div className="sticky-elem sticky-elem-canvas">
         <canvas id="video-canvas-1" width="1920" height="1080"></canvas>
