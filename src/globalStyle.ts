@@ -18,6 +18,11 @@ export const GlobalStyle = createGlobalStyle`
     border: 0;
   }
 
+  #root {
+    /* iOS 가로 스크롤 방지 */
+    overflow-x: hidden;
+  }
+
   ol,
   ul,
   li {

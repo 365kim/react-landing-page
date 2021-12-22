@@ -1,15 +1,19 @@
 import { SectionDescription, SectionHero, SectionLast, SectionPlain } from './sections';
 import { SECTION } from './constants';
+import { GlobalNavBar, LocalNavBar } from './navs';
 import { useResize, useScroll } from './hooks';
 
 export const App = () => {
   const { sectionHeights, accSectionHeights, heightRatio } = useResize();
-  const { currentSection } = useScroll(accSectionHeights);
+  const { currentSection, isNavSticky } = useScroll(accSectionHeights);
   const { HERO, PLAIN, DESCRIPTION, LAST } = SECTION;
 
   return (
     <>
-      <nav></nav>
+      <header>
+        <GlobalNavBar />
+        <LocalNavBar isSticky={isNavSticky} />
+      </header>
       <main>
         <SectionHero
           id="scroll-section-0"
