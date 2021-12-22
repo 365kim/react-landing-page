@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   html {
     font-family: "Apple SD Gothic Neo", Roboto, "Noto Sans KR", NanumGothic,
       "Malgun Gothic", sans-serif;
@@ -103,5 +103,3 @@ const GlobalStyle = createGlobalStyle`
     border: 0;
   }
 `;
-
-export default GlobalStyle;
