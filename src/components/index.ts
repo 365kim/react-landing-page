@@ -5,3 +5,5 @@ export { SectionLast } from './SectionLast';
 
 export { GlobalNavBar } from './GlobalNavBar';
 export { LocalNavBar } from './LocalNavBar';
+
+export { GlobalFooter } from './GlobalFooter';

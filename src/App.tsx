@@ -1,4 +1,12 @@
-import { GlobalNavBar, LocalNavBar, SectionDescription, SectionHero, SectionLast, SectionPlain } from './components';
+import {
+  GlobalFooter,
+  GlobalNavBar,
+  LocalNavBar,
+  SectionDescription,
+  SectionHero,
+  SectionLast,
+  SectionPlain,
+} from './components';
 import { useResize, useScroll } from './hooks';
 import { SECTION } from './constants';
 
@@ -41,7 +49,7 @@ export const App = () => {
           customHeight={sectionHeights[LAST.INDEX]}
         />
       </main>
-      <footer className="footer">2020, 1분코딩</footer>
+      <GlobalFooter />
     </>
   );
 };
