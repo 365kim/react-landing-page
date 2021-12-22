@@ -1,1 +1,0 @@
-# react-landing-page
