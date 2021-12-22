@@ -4,7 +4,6 @@ import { throttle } from '../utils';
 
 const DEFAULT_SECTION_HEIGHT = 1000;
 const THROTTLE_TIME_MS = 300;
-const throttleForResize = throttle(THROTTLE_TIME_MS);
 
 const getSectionHeight = (SECTION_INFO: SectionInfo, deviceHeight: number) => {
   if (SECTION_INFO.TYPE === 'sticky') {
@@ -37,7 +36,7 @@ export const useResize = () => {
       setDeviceWidth(window.innerWidth);
       setDeviceHeight(window.innerHeight);
     };
-    const updateSizeThrottled = () => throttleForResize(updateSize);
+    const updateSizeThrottled = throttle(updateSize, THROTTLE_TIME_MS);
 
     window.addEventListener('resize', updateSizeThrottled);
     return () => window.removeEventListener('resize', updateSizeThrottled);

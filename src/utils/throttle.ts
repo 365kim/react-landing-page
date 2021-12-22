@@ -1,12 +1,12 @@
-export const throttle = (ms: number) => {
-  let timerId: NodeJS.Timer | null;
+export const throttle = (callback: () => void, ms: number) => {
+  let timerId: ReturnType<typeof setTimeout> | null;
 
-  return (callback: () => void) => {
+  return (...arg: any) => {
     if (timerId) {
       return;
     }
     timerId = setTimeout(() => {
-      callback();
+      callback.apply(null, arg);
       timerId = null;
     }, ms);
   };
