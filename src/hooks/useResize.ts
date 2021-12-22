@@ -29,7 +29,12 @@ export const useResize = () => {
 
   const heightRatio = deviceHeight / 1080;
   const accSectionHeights: number[] = [];
-  sectionHeights.reduce((acc, cur) => accSectionHeights.push((acc += cur)), 0);
+
+  sectionHeights.reduce((acc, cur) => {
+    acc += cur;
+    accSectionHeights.push(acc);
+    return acc;
+  }, 0);
 
   useEffect(() => {
     const updateSize = () => {
