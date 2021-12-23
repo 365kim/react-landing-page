@@ -1,5 +1,6 @@
-import { Heading, Section } from './styles';
+import { Heading } from './styles';
 import { SectionProps } from '../../types';
+import { Section } from '../Section';
 
 interface Props extends SectionProps {}
 
@@ -12,7 +13,6 @@ export const SectionHero = ({ sectionInfo, customHeight, heightRatio }: Props) =
       customHeight={customHeight}
       customTransform={customTransform}
       className="scroll-section"
-      style={{ backgroundColor: 'gray' }}
     >
       <Heading>AirMug Pro</Heading>
 

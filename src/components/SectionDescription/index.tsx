@@ -1,16 +1,11 @@
 import { SectionProps } from '../../types';
-import { Section } from './styles';
+import { Section } from '../Section';
 
 interface Props extends SectionProps {}
 
 export const SectionDescription = ({ customHeight }: Props) => {
   return (
-    <Section
-      customHeight={customHeight}
-      className="scroll-section"
-      id="scroll-section-2"
-      style={{ backgroundColor: 'gray' }}
-    >
+    <Section customHeight={customHeight} className="scroll-section" id="scroll-section-2">
       <div className="sticky-elem sticky-elem-canvas">
         <canvas id="video-canvas-1" width="1920" height="1080"></canvas>
       </div>

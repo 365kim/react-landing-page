@@ -1,5 +1,5 @@
 import { SectionProps } from '../../types';
-import { Section } from './styles';
+import { Section } from '../Section';
 
 interface Props extends SectionProps {}
 
