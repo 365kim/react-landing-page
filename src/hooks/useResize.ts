@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { SECTION, SectionInfo } from '../constants';
+import { SECTION_HERO, SECTION_PLAIN, SECTION_DESCRIPTION, SECTION_LAST, SectionInfo } from '../constants';
 import { throttle } from '../utils';
 
 const DEFAULT_SECTION_HEIGHT = 1000;
@@ -20,7 +20,7 @@ const getSectionHeight = (SECTION_INFO: SectionInfo, deviceHeight: number) => {
   throw new Error('SECTION_INFO의 TYPE이 유효하지 않은 값입니다.');
 };
 
-const sections = Object.values(SECTION).sort((v) => v.INDEX);
+const sections: SectionInfo[] = [SECTION_HERO, SECTION_PLAIN, SECTION_DESCRIPTION, SECTION_LAST];
 
 export const useResize = () => {
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);

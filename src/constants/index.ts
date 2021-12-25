@@ -20,25 +20,26 @@ interface Section {
 export type SectionKey = keyof Section;
 export type SectionInfo = NormalSectionInfo | StickySectionInfo;
 
-export const SECTION: Section = {
-  HERO: {
-    INDEX: 0,
-    TYPE: 'sticky',
-    SCREEN_HEIGHT_COUNT: 5,
-  },
-  PLAIN: {
-    INDEX: 1,
-    TYPE: 'normal',
-    CONTENT_SELECTOR: '#scroll-section-1 .description',
-  },
-  DESCRIPTION: {
-    INDEX: 2,
-    TYPE: 'sticky',
-    SCREEN_HEIGHT_COUNT: 5,
-  },
-  LAST: {
-    INDEX: 3,
-    TYPE: 'sticky',
-    SCREEN_HEIGHT_COUNT: 5,
-  },
+export const SECTION_HERO: StickySectionInfo = {
+  INDEX: 0,
+  TYPE: 'sticky',
+  SCREEN_HEIGHT_COUNT: 5,
+};
+
+export const SECTION_PLAIN: NormalSectionInfo = {
+  INDEX: 1,
+  TYPE: 'normal',
+  CONTENT_SELECTOR: '#scroll-section-1 .description',
+};
+
+export const SECTION_DESCRIPTION: StickySectionInfo = {
+  INDEX: 2,
+  TYPE: 'sticky',
+  SCREEN_HEIGHT_COUNT: 5,
+};
+
+export const SECTION_LAST: StickySectionInfo = {
+  INDEX: 3,
+  TYPE: 'sticky',
+  SCREEN_HEIGHT_COUNT: 5,
 };
