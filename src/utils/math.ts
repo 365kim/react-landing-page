@@ -4,6 +4,15 @@ export const toFixed = (value: number, fractionDigit = 3) => {
 
 export const getMid = (range: [number, number], ratio: number, fractionDigit = 3) => {
   const [start, end] = range;
+  let result;
 
-  return toFixed(start + (end - start) * ratio, fractionDigit);
+  if (ratio < 0) {
+    result = start;
+  } else if (ratio > 1) {
+    result = end;
+  } else {
+    result = start + (end - start) * ratio;
+  }
+
+  return toFixed(result, fractionDigit);
 };
