@@ -5,7 +5,13 @@ import { SectionPlain } from './SectionPlain';
 import { SectionDescription } from './SectionDescription';
 import { SectionLast } from './SectionLast';
 import { useResize, useScroll } from '../../hooks';
-import { SECTION_HERO, SECTION_PLAIN, SECTION_DESCRIPTION, SECTION_LAST } from '../../constants';
+
+enum INDEX {
+  HERO = 0,
+  PLAIN,
+  DESCRIPTION,
+  LAST,
+}
 
 export interface SectionProps extends HTMLAttributes<HTMLElement> {
   isCurrentSection: boolean;
@@ -27,29 +33,25 @@ export const Home = () => {
   return (
     <>
       <SectionHero
-        id="scroll-section-0"
-        isCurrentSection={sectionIndex === SECTION_HERO.INDEX}
-        sectionHeight={sectionHeights[SECTION_HERO.INDEX]}
+        isCurrentSection={sectionIndex === INDEX.HERO}
+        sectionHeight={sectionHeights[INDEX.HERO]}
         heightRatio={heightRatio}
         sectionScrollY={sectionScrollY}
       />
       <SectionPlain
-        id="scroll-section-1"
-        isCurrentSection={sectionIndex === SECTION_PLAIN.INDEX}
-        sectionHeight={sectionHeights[SECTION_HERO.INDEX]}
+        isCurrentSection={sectionIndex === INDEX.PLAIN}
+        sectionHeight={sectionHeights[INDEX.PLAIN]}
         heightRatio={heightRatio}
       />
       <SectionDescription
-        id="scroll-section-2"
-        isCurrentSection={sectionIndex === SECTION_DESCRIPTION.INDEX}
-        sectionHeight={sectionHeights[SECTION_DESCRIPTION.INDEX]}
+        isCurrentSection={sectionIndex === INDEX.DESCRIPTION}
+        sectionHeight={sectionHeights[INDEX.DESCRIPTION]}
         heightRatio={heightRatio}
         sectionScrollY={sectionScrollY}
       />
       <SectionLast
-        id="scroll-section-3"
-        isCurrentSection={sectionIndex === SECTION_LAST.INDEX}
-        sectionHeight={sectionHeights[SECTION_LAST.INDEX]}
+        isCurrentSection={sectionIndex === INDEX.LAST}
+        sectionHeight={sectionHeights[INDEX.LAST]}
         heightRatio={heightRatio}
         sectionScrollY={sectionScrollY}
       />
