@@ -1,3 +1,4 @@
+import { HTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
 
 const visibleStyle = css`
@@ -5,7 +6,7 @@ const visibleStyle = css`
   will-change: transform, opacity;
 `;
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLElement> {
   isVisible: boolean;
 }
 
