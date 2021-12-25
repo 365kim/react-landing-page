@@ -1,14 +1,14 @@
 import { SectionToScroll } from './styles';
 
 interface Props extends Partial<Omit<HTMLElement, 'children'>> {
-  customHeight: number;
+  sectionHeight: number;
   customTransform?: string;
   children: JSX.Element | JSX.Element[];
 }
 
-export const Section = ({ children, customHeight, customTransform }: Props) => {
+export const Section = ({ children, sectionHeight, customTransform }: Props) => {
   return (
-    <SectionToScroll customHeight={customHeight} customTransform={customTransform}>
+    <SectionToScroll sectionHeight={sectionHeight} customTransform={customTransform}>
       {children}
     </SectionToScroll>
   );

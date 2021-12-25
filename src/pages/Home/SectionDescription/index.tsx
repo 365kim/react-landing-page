@@ -1,11 +1,9 @@
-import { SectionProps } from '../../types';
-import { Section } from '../Section';
+import { Section } from '../../../components/Section';
+import { StickySectionProps } from '..';
 
-interface Props extends SectionProps {}
-
-export const SectionDescription = ({ customHeight }: Props) => {
+export const SectionDescription = ({ id, isCurrentSection, sectionHeight, heightRatio }: StickySectionProps) => {
   return (
-    <Section customHeight={customHeight} className="scroll-section" id="scroll-section-2">
+    <Section sectionHeight={sectionHeight} className="scroll-section" id="scroll-section-2">
       <div className="sticky-elem sticky-elem-canvas">
         <canvas id="video-canvas-1" width="1920" height="1080"></canvas>
       </div>

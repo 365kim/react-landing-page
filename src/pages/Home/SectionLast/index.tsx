@@ -1,11 +1,9 @@
-import { SectionProps } from '../../types';
-import { Section } from '../Section';
+import { StickySectionProps } from '..';
+import { Section } from '../../../components';
 
-interface Props extends SectionProps {}
-
-export const SectionLast = ({ customHeight }: Props) => {
+export const SectionLast = ({ sectionHeight }: StickySectionProps) => {
   return (
-    <Section customHeight={customHeight} className="scroll-section" id="scroll-section-3">
+    <Section sectionHeight={sectionHeight} className="scroll-section" id="scroll-section-3">
       <p className="mid-message">
         <strong>Retina 머그</strong>
         <br />

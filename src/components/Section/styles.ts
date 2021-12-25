@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 interface Props {
-  customHeight: number;
+  sectionHeight: number;
   customTransform?: string;
 }
 
 export const SectionToScroll = styled.section<Props>`
   position: relative;
   padding-top: 50vh;
-  height: ${(props) => props.customHeight + 'px'};
+  height: ${(props) => props.sectionHeight + 'px'};
   transform: ${(props) => props.customTransform || 'none'};
 `;

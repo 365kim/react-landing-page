@@ -1,11 +1,9 @@
-import { SectionProps } from '../../types';
-import { Section } from '../Section';
+import { Section } from '../../../components';
+import { SectionProps } from '..';
 
-interface Props extends SectionProps {}
-
-export const SectionPlain = ({ customHeight }: Props) => {
+export const SectionPlain = ({ sectionHeight }: SectionProps) => {
   return (
-    <Section customHeight={customHeight} className="scroll-section" id="scroll-section-1">
+    <Section sectionHeight={sectionHeight} className="scroll-section" id="scroll-section-1">
       <p className="description">
         <strong>보통 스크롤 영역</strong>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae est ipsa minima, eligendi error cum vel dolorum

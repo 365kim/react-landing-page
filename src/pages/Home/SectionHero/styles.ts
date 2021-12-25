@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Sticky } from '../../../components';
 
 export const Heading = styled.h1`
   position: relative;
@@ -8,7 +9,7 @@ export const Heading = styled.h1`
   text-align: center;
 `;
 
-export const MainMessage = styled.div`
+export const MainMessage = styled(Sticky)`
   display: flex;
   align-items: center;
   justify-content: center;

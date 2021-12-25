@@ -1,7 +1,7 @@
-export { SectionHero } from './SectionHero';
-export { SectionDescription } from './SectionDescription';
-export { SectionPlain } from './SectionPlain';
-export { SectionLast } from './SectionLast';
+export { Loader } from './Loader';
+export { Section } from './Section';
+export { Sticky } from './Sticky';
+export { StickyCanvas } from './StickyCanvas';
 
 export { GlobalNavBar } from './GlobalNavBar';
 export { LocalNavBar } from './LocalNavBar';
