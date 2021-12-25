@@ -36,7 +36,6 @@ export const SectionHero = ({ sectionScrollY, sectionHeight, heightRatio, isCurr
           const opacity = getMid(FADE.OPACITY, messageScrollRatio);
           const translateY = getMid(FADE.TRANSLATE, messageScrollRatio);
 
-          console.log({ isCurrentSection });
           return (
             <StickyMessage key={i} isVisible={isCurrentSection} opacity={opacity} translateY={translateY}>
               <p>
