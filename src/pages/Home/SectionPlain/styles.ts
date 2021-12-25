@@ -4,6 +4,7 @@ export const Paragraph = styled.p`
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 1rem;
+  line-height: 1.6;
   font-size: 1.2rem;
   color: #888;
 

@@ -1,10 +1,11 @@
 import { Section } from '../../../components';
+import { Paragraph } from './styles';
 import { SectionProps } from '..';
 
 export const SectionPlain = ({ sectionHeight }: SectionProps) => {
   return (
-    <Section sectionHeight={sectionHeight} className="scroll-section" id="scroll-section-1">
-      <p className="description">
+    <Section sectionHeight={sectionHeight} className="section-plain">
+      <Paragraph className="description">
         <strong>보통 스크롤 영역</strong>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae est ipsa minima, eligendi error cum vel dolorum
         pariatur officia facilis ipsam voluptatibus ad quasi porro quod quisquam quidem tempora accusantium accusamus,
@@ -20,7 +21,7 @@ export const SectionPlain = ({ sectionHeight }: SectionProps) => {
         maxime tempore, aut nihil. Qui, quam? Voluptate fuga possimus itaque quas nesciunt iste, facilis mollitia illo
         qui placeat temporibus inventore obcaecati. Recusandae, sequi dignissimos in natus eum maiores dolorem, deleniti
         nobis accusantium, aspernatur beatae.
-      </p>
+      </Paragraph>
     </Section>
   );
 };
