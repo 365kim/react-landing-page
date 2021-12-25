@@ -17,8 +17,10 @@ export const Message = styled.div<Props>`
   top: 35vh;
   left: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+
   width: 100%;
   height: 3em;
   margin: 5px 0;

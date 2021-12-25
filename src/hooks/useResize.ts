@@ -9,7 +9,7 @@ const getSectionHeight = (SECTION_INFO: SectionInfo, deviceHeight: number) => {
   if (SECTION_INFO.TYPE === 'sticky') {
     return deviceHeight * SECTION_INFO.SCREEN_HEIGHT_COUNT;
   }
-  if (SECTION_INFO.TYPE === 'normal') {
+  if (SECTION_INFO.TYPE === 'plain') {
     const $content = document.querySelector<HTMLElement>(SECTION_INFO.CONTENT_SELECTOR)!;
 
     if ($content === null) {
