@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StickyMessage = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   top: 35vh;
@@ -10,7 +11,7 @@ export const StickyMessage = styled.div`
   font-size: 3.5rem;
   opacity: 0;
 
-  & > p {
+  & p {
     font-weight: bold;
     text-align: center;
     line-height: 1.2;

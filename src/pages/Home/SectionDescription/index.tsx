@@ -1,37 +1,43 @@
-import { Section } from '../../../components/Section';
-import { StickySectionProps } from '..';
+import { Section, StickyCanvas, StickyMessage } from '../../../components';
+import { StickySectionProps as Props } from '..';
+import { getMid, toFixed } from '../../../utils';
+import { messagesChildren } from './messages';
+import { SECTION_DESCRIPTION } from '../../../constants';
 
-export const SectionDescription = ({ id, isCurrentSection, sectionHeight, heightRatio }: StickySectionProps) => {
+const { VIDEO_CONFIG, MESSAGES_CONFIG } = SECTION_DESCRIPTION;
+
+export const SectionDescription = ({ isCurrentSection, sectionHeight, sectionScrollY, heightRatio }: Props) => {
+  const scrollRatio = toFixed(sectionScrollY / sectionHeight);
+
   return (
     <Section sectionHeight={sectionHeight} className="scroll-section" id="scroll-section-2">
-      <div className="sticky-elem sticky-elem-canvas">
-        <canvas id="video-canvas-1" width="1920" height="1080"></canvas>
-      </div>
+      <StickyCanvas
+        isVisible={isCurrentSection}
+        opacity={getMid(VIDEO_CONFIG!.FADE_IN.OPACITY, scrollRatio)}
+        scale={heightRatio}
+        width={1920}
+        height={1080}
+      ></StickyCanvas>
+      <>
+        {messagesChildren.map((children, index) => {
+          const { THRESHOLD, FADE_IN, FADE_OUT } = MESSAGES_CONFIG![index];
+          const FADE = scrollRatio < THRESHOLD ? FADE_IN : FADE_OUT;
 
-      <div className="sticky-elem main-message a">
-        <p>
-          <small>편안한 촉감</small>
-          입과 하나 되다
-        </p>
-      </div>
+          const [START, END] = FADE.SCROLL;
+          const messageScrollRatio = toFixed(
+            (sectionScrollY - sectionHeight * START) / ((END - START) * sectionHeight)
+          );
 
-      <div className="sticky-elem desc-message b">
-        <p>
-          편안한 목넘김을 완성하는 디테일한 여러 구성 요소들, 우리는 이를 하나하나 새롭게 살피고 재구성하는 과정을 거쳐
-          새로운 수준의 머그, AirMug Pro를 만들었습니다. 입에 뭔가 댔다는 감각은 어느새 사라지고 오롯이 당신과 음료만
-          남게 되죠.
-        </p>
-        <div className="pin"></div>
-      </div>
+          const opacity = getMid(FADE.OPACITY, messageScrollRatio);
+          const translateY = getMid(FADE.TRANSLATE!, messageScrollRatio);
 
-      <div className="sticky-elem desc-message c">
-        <p>
-          디자인 앤 퀄리티 오브 스웨덴,
-          <br />
-          메이드 인 차이나
-        </p>
-        <div className="pin"></div>
-      </div>
+          return (
+            <StickyMessage key={index} isVisible={isCurrentSection} opacity={opacity} translateY={translateY}>
+              {children}
+            </StickyMessage>
+          );
+        })}
+      </>
     </Section>
   );
 };

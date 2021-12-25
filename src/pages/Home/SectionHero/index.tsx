@@ -1,12 +1,13 @@
 import { Heading } from './styles';
 import { Section, StickyCanvas, StickyMessage } from '../../../components';
 import { getMid, toFixed } from '../../../utils';
-import { SECTION_HERO } from '../../../constants';
 import { StickySectionProps } from '..';
+import { messagesChildren } from './messages';
+import { SECTION_HERO } from '../../../constants';
 
-const { VIDEO, MESSAGES } = SECTION_HERO;
+const { VIDEO_CONFIG, MESSAGES_CONFIG } = SECTION_HERO;
 
-export const SectionHero = ({ sectionScrollY, sectionHeight, heightRatio, isCurrentSection }: StickySectionProps) => {
+export const SectionHero = ({ isCurrentSection, sectionHeight, sectionScrollY, heightRatio }: StickySectionProps) => {
   const scrollRatio = toFixed(sectionScrollY / sectionHeight);
 
   return (
@@ -14,18 +15,16 @@ export const SectionHero = ({ sectionScrollY, sectionHeight, heightRatio, isCurr
       <Heading>AirMug Pro</Heading>
 
       <StickyCanvas
-        className="sticky-elem sticky-elem-canvas"
         isVisible={isCurrentSection}
-        opacity={getMid(VIDEO!.OPACITY, scrollRatio)}
+        opacity={getMid(VIDEO_CONFIG!.FADE_IN.OPACITY, scrollRatio)}
         scale={heightRatio}
         width={1920}
         height={1080}
       ></StickyCanvas>
 
       <>
-        {MESSAGES!.map((MESSAGE, i) => {
-          const { THRESHOLD, FADE_IN, FADE_OUT, TEXTS } = MESSAGE;
-          const [firstText, secondText] = TEXTS;
+        {messagesChildren!.map((children, i) => {
+          const { THRESHOLD, FADE_IN, FADE_OUT } = MESSAGES_CONFIG[i];
           const FADE = scrollRatio < THRESHOLD ? FADE_IN : FADE_OUT;
 
           const [START, END] = FADE.SCROLL;
@@ -34,15 +33,11 @@ export const SectionHero = ({ sectionScrollY, sectionHeight, heightRatio, isCurr
           );
 
           const opacity = getMid(FADE.OPACITY, messageScrollRatio);
-          const translateY = getMid(FADE.TRANSLATE, messageScrollRatio);
+          const translateY = getMid(FADE.TRANSLATE!, messageScrollRatio);
 
           return (
             <StickyMessage key={i} isVisible={isCurrentSection} opacity={opacity} translateY={translateY}>
-              <p>
-                {firstText}
-                <br />
-                {secondText}
-              </p>
+              {children}
             </StickyMessage>
           );
         })}
