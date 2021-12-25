@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
 
 const visibleStyle = css`
-  display: flex;
+  visibility: visible;
   will-change: transform, opacity;
 `;
 
@@ -16,13 +16,14 @@ export const Message = styled.div<Props>`
   position: fixed;
   top: 35vh;
   left: 0;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 3em;
   margin: 5px 0;
   font-size: 3.5rem;
+  visibility: hidden;
 
   opacity: ${(props) => props.opacity ?? 0};
   transform: translateY(${(props) => `${props.translateY}%` ?? 0});
