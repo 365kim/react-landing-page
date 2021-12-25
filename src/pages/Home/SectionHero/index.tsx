@@ -3,7 +3,7 @@ import { Section, StickyCanvas, StickyMessage } from '../../../components';
 import { getMid, toFixed } from '../../../utils';
 import { StickySectionProps } from '..';
 import { messagesChildren } from './messages';
-import { SECTION_HERO } from '../../../constants';
+import { CANVAS_HEIGHT, CANVAS_WIDTH, SECTION_HERO } from '../../../constants';
 
 const { VIDEO_CONFIG, MESSAGES_CONFIG } = SECTION_HERO;
 
@@ -18,12 +18,12 @@ export const SectionHero = ({ isCurrentSection, sectionHeight, sectionScrollY, h
         isVisible={isCurrentSection}
         opacity={getMid(VIDEO_CONFIG!.FADE_IN.OPACITY, scrollRatio)}
         scale={heightRatio}
-        width={1920}
-        height={1080}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
       ></StickyCanvas>
 
       <>
-        {messagesChildren!.map((children, i) => {
+        {messagesChildren.map((children, i) => {
           const { THRESHOLD, FADE_IN, FADE_OUT } = MESSAGES_CONFIG[i];
           const FADE = scrollRatio < THRESHOLD ? FADE_IN : FADE_OUT;
 

@@ -2,7 +2,7 @@ import { Section, StickyCanvas, StickyMessage } from '../../../components';
 import { StickySectionProps as Props } from '..';
 import { getMid, toFixed } from '../../../utils';
 import { messagesChildren } from './messages';
-import { SECTION_DESCRIPTION } from '../../../constants';
+import { CANVAS_HEIGHT, CANVAS_WIDTH, SECTION_DESCRIPTION } from '../../../constants';
 
 const { VIDEO_CONFIG, MESSAGES_CONFIG } = SECTION_DESCRIPTION;
 
@@ -15,8 +15,8 @@ export const SectionDescription = ({ isCurrentSection, sectionHeight, sectionScr
         isVisible={isCurrentSection}
         opacity={getMid(VIDEO_CONFIG!.FADE_IN.OPACITY, scrollRatio)}
         scale={heightRatio}
-        width={1920}
-        height={1080}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
       ></StickyCanvas>
       <>
         {messagesChildren.map((children, index) => {
