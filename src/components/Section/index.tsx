@@ -8,7 +8,7 @@ interface Props extends Partial<Omit<HTMLElement, 'children'>> {
 
 export const Section = ({ children, sectionHeight, customTransform }: Props) => {
   return (
-    <SectionToScroll sectionHeight={sectionHeight} customTransform={customTransform}>
+    <SectionToScroll sectionHeight={sectionHeight} >
       {children}
     </SectionToScroll>
   );

@@ -7,9 +7,7 @@ const THROTTLE_TIME_MS = 30;
 export const useScroll = (accSectionHeights: number[]) => {
   const [scrollY, setScrollY] = useState(window.scrollY | window.pageYOffset);
   const sectionIndex = getSectionIndex(scrollY, accSectionHeights);
-  const sectionScrollY = scrollY - accSectionHeights[sectionIndex];
-
-  console.log({ sectionIndex });
+  const sectionScrollY = scrollY - (accSectionHeights[sectionIndex - 1] || 0);
 
   useEffect(() => {
     const updateScrollY = () => setScrollY(window.scrollY | window.pageYOffset);
