@@ -1,63 +1,53 @@
-import { useEffect } from 'react';
-
+import { Heading, StickyMessage } from './styles';
 import { Section, StickyCanvas } from '../../../components';
-import { Heading, MainMessage } from './styles';
-import { animateSection } from './animateSection';
+import { getMid, toFixed } from '../../../utils';
+import { SECTION_HERO } from '../../../constants';
 import { StickySectionProps } from '..';
 
-export const SectionHero = ({ sectionScrollY, sectionHeight, heightRatio, isCurrentSection }: StickySectionProps) => {
-  const customTransform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
+const { VIDEO, MESSAGES } = SECTION_HERO;
 
-  useEffect(() => {
-    if (isCurrentSection) {
-      animateSection({ sectionScrollY, sectionHeight });
-    }
-  });
+export const SectionHero = ({ sectionScrollY, sectionHeight, heightRatio, isCurrentSection }: StickySectionProps) => {
+  const scrollRatio = toFixed(sectionScrollY / sectionHeight);
 
   return (
-    <Section
-      id="scroll-section-0"
-      sectionHeight={sectionHeight}
-      customTransform={customTransform}
-      className="scroll-section"
-    >
+    <Section sectionHeight={sectionHeight} className="scroll-section">
       <Heading>AirMug Pro</Heading>
 
-      <StickyCanvas isVisible={isCurrentSection} className="sticky-elem sticky-elem-canvas">
-        <canvas id="video-canvas-0" width="1920" height="1080"></canvas>
-      </StickyCanvas>
+      <StickyCanvas
+        className="sticky-elem sticky-elem-canvas"
+        isVisible={isCurrentSection}
+        opacity={getMid(VIDEO!.OPACITY, scrollRatio)}
+        scale={heightRatio}
+        width={1920}
+        height={1080}
+      ></StickyCanvas>
 
-      <MainMessage isVisible={isCurrentSection} className="a">
-        <p>
-          온전히 빠져들게 하는
-          <br />
-          최고급 세라믹
-        </p>
-      </MainMessage>
+      <>
+        {MESSAGES!.map((MESSAGE, i) => {
+          const { THRESHOLD, FADE_IN, FADE_OUT, TEXTS } = MESSAGE;
+          const [firstText, secondText] = TEXTS;
+          const FADE = scrollRatio < THRESHOLD ? FADE_IN : FADE_OUT;
 
-      <MainMessage isVisible={isCurrentSection} className="b">
-        <p>
-          주변 맛을 느끼게 해주는
-          <br />
-          주변 맛 허용 모드
-        </p>
-      </MainMessage>
+          const [START, END] = FADE.SCROLL;
+          const messageScrollRatio = toFixed(
+            (sectionScrollY - sectionHeight * START) / ((END - START) * sectionHeight)
+          );
 
-      <MainMessage isVisible={isCurrentSection} className="c">
-        <p>
-          온종일 편안한
-          <br />
-          맞춤형 손잡이
-        </p>
-      </MainMessage>
+          const opacity = getMid(FADE.OPACITY, messageScrollRatio);
+          const translateY = getMid(FADE.TRANSLATE, messageScrollRatio);
 
-      <MainMessage isVisible={isCurrentSection} className="d">
-        <p>
-          새롭게 입가를
-          <br />
-          찾아온 매혹
-        </p>
-      </MainMessage>
+          console.log({ isCurrentSection });
+          return (
+            <StickyMessage key={i} isVisible={isCurrentSection} opacity={opacity} translateY={translateY}>
+              <p>
+                {firstText}
+                <br />
+                {secondText}
+              </p>
+            </StickyMessage>
+          );
+        })}
+      </>
     </Section>
   );
 };
