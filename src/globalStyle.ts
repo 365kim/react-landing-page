@@ -2,8 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   html {
-    font-family: "Apple SD Gothic Neo", Roboto, "Noto Sans KR", NanumGothic,
-      "Malgun Gothic", sans-serif;
+    font-family: "Noto Sans KR", NanumGothic, "Malgun Gothic", sans-serif;
     line-height: 1.2;
     word-wrap: break-word;
   }
