@@ -1,12 +1,25 @@
+import { useEffect, useState } from 'react';
+
 import { Nav, NavLinks, NavLinkProduct, NavLinkMenu } from './styles';
+import { GLOBAL_NAV_BAR_HEIGHT } from '../GlobalNavBar/styles';
+import { throttle } from '../../utils';
 
-interface Props {
-  isSticky: boolean;
-}
+const THROTTLE_TIME_MS = 30;
 
-export const LocalNavBar = ({ isSticky }: Props) => {
+export const LocalNavBar = () => {
+  const [scrollY, setScrollY] = useState(window.scrollY | window.pageYOffset);
+  const isNavSticky = scrollY > GLOBAL_NAV_BAR_HEIGHT;
+
+  useEffect(() => {
+    const updateScrollY = () => setScrollY(window.scrollY | window.pageYOffset);
+    const updateScrollYThrottled = throttle(updateScrollY, THROTTLE_TIME_MS);
+
+    window.addEventListener('scroll', updateScrollYThrottled);
+    return () => window.removeEventListener('scroll', updateScrollYThrottled);
+  }, []);
+
   return (
-    <Nav isSticky={isSticky}>
+    <Nav isSticky={isNavSticky}>
       <NavLinks>
         <NavLinkProduct href="#">AirMug Pro</NavLinkProduct>
         <NavLinkMenu href="#">개요</NavLinkMenu>

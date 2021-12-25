@@ -1,40 +1,36 @@
 import { useEffect, useState } from 'react';
-import { GLOBAL_NAV_BAR_HEIGHT } from '../components/GlobalNavBar/styles';
+
 import { throttle } from '../utils';
 
 const THROTTLE_TIME_MS = 30;
 
 export const useScroll = (accSectionHeights: number[]) => {
-  const [currentSection, setCurrentSection] = useState<number>(-1);
-  const [isNavSticky, setIsNavSticky] = useState(false);
-  console.log({ currentSection });
+  const [scrollY, setScrollY] = useState(window.scrollY | window.pageYOffset);
+  const sectionIndex = getSectionIndex(scrollY, accSectionHeights);
+  const sectionScrollY = scrollY - accSectionHeights[sectionIndex];
+
+  console.log({ sectionIndex });
 
   useEffect(() => {
-    const updateCurrentSection = () => {
-      const scrollY = window.scrollY | window.pageYOffset;
+    const updateScrollY = () => setScrollY(window.scrollY | window.pageYOffset);
+    const updateScrollYThrottled = throttle(updateScrollY, THROTTLE_TIME_MS);
 
-      setIsNavSticky(scrollY > GLOBAL_NAV_BAR_HEIGHT);
-
-      for (let index = 0; index < accSectionHeights.length; index++) {
-        if (scrollY < accSectionHeights[index]) {
-          setCurrentSection(index);
-          return;
-        }
-      }
-      const lastIndex = accSectionHeights.length - 1;
-
-      setCurrentSection(lastIndex);
-    };
-
-    const updateCurrentSectionThrottled = throttle(updateCurrentSection, THROTTLE_TIME_MS);
-
-    window.addEventListener('scroll', updateCurrentSectionThrottled);
-    return () => window.removeEventListener('scroll', updateCurrentSectionThrottled);
+    window.addEventListener('scroll', updateScrollYThrottled);
+    return () => window.removeEventListener('scroll', updateScrollYThrottled);
   }, []);
 
   return {
-    isNavSticky,
-    currentSection,
-    setCurrentSection,
+    scrollY,
+    sectionScrollY,
+    sectionIndex,
   };
 };
+
+function getSectionIndex(scrollY: number, accSectionHeights: number[]) {
+  for (let index = 0; index < accSectionHeights.length; index++) {
+    if (scrollY < accSectionHeights[index]) {
+      return index;
+    }
+  }
+  return accSectionHeights.length - 1;
+}
