@@ -25,7 +25,7 @@ export const Message = styled.div<Props>`
   font-size: 3.5rem;
 
   opacity: ${(props) => props.opacity ?? 0};
-  transform: translateY(${(props) => props.translateY ?? 0});
+  transform: translateY(${(props) => `${props.translateY}%` ?? 0});
   ${(props) => props.isVisible && visibleStyle};
 
   & > p {
