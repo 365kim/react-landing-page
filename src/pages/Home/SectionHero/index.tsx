@@ -1,5 +1,5 @@
-import { Heading, StickyMessage } from './styles';
-import { Section, StickyCanvas } from '../../../components';
+import { Heading } from './styles';
+import { Section, StickyCanvas, StickyMessage } from '../../../components';
 import { getMid, toFixed } from '../../../utils';
 import { SECTION_HERO } from '../../../constants';
 import { StickySectionProps } from '..';

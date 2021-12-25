@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MainMessage = styled.div`
+export const StickyMessage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

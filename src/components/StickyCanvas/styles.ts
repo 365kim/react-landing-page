@@ -6,15 +6,28 @@ const visibleStyle = css`
   will-change: transform, opacity;
 `;
 
-interface Props extends HTMLAttributes<HTMLElement> {
+interface StickyProps extends HTMLAttributes<HTMLElement> {
   isVisible: boolean;
 }
 
-export const StickyElement = styled.div<Props>`
-  ${(props) => (props.isVisible ? visibleStyle : null)}
-
+export const StickyElement = styled.div<StickyProps>`
   display: none;
   position: fixed;
   left: 0;
   width: 100%;
+
+  ${(props) => props.isVisible && visibleStyle}
+`;
+
+interface CanvasProps extends HTMLAttributes<HTMLCanvasElement> {
+  opacity: number;
+  scale: number;
+}
+
+export const Canvas = styled.canvas<CanvasProps>`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: ${(props) => props.opacity};
+  transform: translate3d(-50%, -50%, 0) scale(${(props) => props.scale ?? 1});
 `;
