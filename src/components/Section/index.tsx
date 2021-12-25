@@ -6,5 +6,5 @@ interface Props extends Partial<Omit<HTMLElement, 'children'>> {
 }
 
 export const Section = ({ children, sectionHeight }: Props) => {
-  return <SectionToScroll sectionHeight={sectionHeight}>{children}</SectionToScroll>;
+  return <SectionToScroll sectionHeight={`${sectionHeight}px`}>{children}</SectionToScroll>;
 };
