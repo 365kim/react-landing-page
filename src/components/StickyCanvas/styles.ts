@@ -20,14 +20,14 @@ export const StickyElement = styled.div<StickyProps>`
 `;
 
 interface CanvasProps extends HTMLAttributes<HTMLCanvasElement> {
-  opacity: number;
-  scale: number;
+  opacity?: number;
+  scale?: number;
 }
 
 export const Canvas = styled.canvas<CanvasProps>`
   position: absolute;
   top: 50%;
   left: 50%;
-  opacity: ${(props) => props.opacity};
+  opacity: ${(props) => props.opacity ?? 1};
   transform: translate3d(-50%, -50%, 0) scale(${(props) => props.scale ?? 1});
 `;
