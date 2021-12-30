@@ -6,6 +6,19 @@ import { messagesChildren } from './messages';
 import { CANVAS_HEIGHT, CANVAS_WIDTH, SECTION_HERO } from '../../../constants';
 
 const { VIDEO_CONFIG, MESSAGES_CONFIG } = SECTION_HERO;
+const VIDEO_IMAGE_COUNT = 960;
+
+const nthImagePath = (i: number) => `./video/001/IMG_${6726 + i}.JPG`;
+const imageElements = Array(VIDEO_IMAGE_COUNT).map((_, i) => {
+  const $image = new Image();
+
+  $image.src = nthImagePath(i);
+  return $image;
+});
+
+const draw = (context: CanvasRenderingContext2D, imageIndex = 0, dx = 0, dy = 0) => {
+  context.drawImage(imageElements[imageIndex], dx, dy);
+};
 
 export const SectionHero = ({ isCurrentSection, sectionHeight, sectionScrollY, heightRatio }: StickySectionProps) => {
   const scrollRatio = toFixed(sectionScrollY / sectionHeight);
@@ -20,6 +33,7 @@ export const SectionHero = ({ isCurrentSection, sectionHeight, sectionScrollY, h
         scale={heightRatio}
         width={CANVAS_WIDTH}
         height={CANVAS_HEIGHT}
+        draw={draw}
       ></StickyCanvas>
 
       <>
