@@ -1,5 +1,7 @@
 import { StickySectionProps } from '..';
-import { Section } from '../../../components';
+    $image.src = imagesPaths[i];
+  
+  
 
 export const SectionLast = ({ sectionHeight }: StickySectionProps) => {
   return (
