@@ -7,7 +7,7 @@ import { CANVAS_HEIGHT, CANVAS_WIDTH, SECTION_DESCRIPTION } from '../../../const
 const { VIDEO_CONFIG, MESSAGES_CONFIG } = SECTION_DESCRIPTION;
 const VIDEO_IMAGE_COUNT = 960;
 
-const nthImagePath = (i: number) => `./video/001/IMG_${7027 + i}.JPG`;
+const nthImagePath = (i: number) => `./src/assets/descriptionImages/IMG_${7027 + i}.JPG`;
 const imageElements = Array(VIDEO_IMAGE_COUNT).map((_, i) => {
   const $image = new Image();
 
